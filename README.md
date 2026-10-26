@@ -43,6 +43,6 @@ Orange: `#F3B845` | Pink: `#DF4E76`
 
 Snoozz is licensed under the [GNU GPLv3](https://github.com/rohanb10/snoozz-tab-snoozing/blob/master/LICENSE) license.
 
-Built by [rohan](https://rohan.xyz) in 2020/21
+Built by [rohan](https://rohan.xyz) in 2020/21, updated by [LibertusRex](https://github.com/LibertusRex) in 2026.
 
-[🍺 Buy me a beer](https://www.buymeacoffee.com/rohanb10)
+[Buy me a coffee](https://ko-fi.com/libertusrex)
