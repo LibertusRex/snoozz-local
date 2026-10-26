@@ -5,25 +5,10 @@
 </p>
 
 <div align="center">
-	<a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/snoozz/">
-		<img src="https://img.shields.io/amo/v/snoozz?color=orange&logo=firefox-browser&label=firefox%20add-on" alt="Mozilla Add-on">
-		</a>
-	<a target="_blank" href="https://chrome.google.com/webstore/detail/snoozz-snooze-tabs-window/lklendgldejcnkkaldoggoapclkepgfb">
-		<img src="https://img.shields.io/chrome-web-store/v/lklendgldejcnkkaldoggoapclkepgfb?logo=google-chrome&color=yellow&logoColor=white" alt="Chrome Web Store">
-	</a>
-	<a href="https://github.com/rohanb10/snoozz-tab-snoozing/releases/latest/">
-		<img alt="GitHub Latest Release" src="https://img.shields.io/github/v/release/rohanb10/snoozz-tab-snoozing?label=latest%20release">
-	</a>
-</div>
-<div align="center">
-	<img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/rohanb10/snoozz-tab-snoozing?color=red">
-	<img alt="GitHub commits since latest release" src="https://img.shields.io/github/commits-since/rohanb10/snoozz-tab-snoozing/latest?color=9cf">
 	<a href="https://github.com/rohanb10/snoozz-tab-snoozing/blob/master/LICENSE">
 		<img src="https://img.shields.io/github/license/rohanb10/snoozz-tab-snoozing?color=lightgrey" alt="License">
 	</a>
-	<a href="https://ko-fi.com/libertusrex">
-		<img alt="Buy me a coffee" src="https://ko-fi.com/libertusrex">
-	</a>
+	<a href="https://ko-fi.com/libertusrex">Buy me a coffee</a>
 </div>
 
 
@@ -45,7 +30,7 @@ I initially built this for myself. Had too many tabs open at the end of the day,
 
 Available on [Chrome](https://chrome.google.com/webstore/detail/snoozz-snooze-tabs-window/lklendgldejcnkkaldoggoapclkepgfb), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/snoozz/), [Edge](https://microsoftedge.microsoft.com/addons/detail/ifofnjpbldmdcbkaalbdgaopphhlopok) and as a custom build for [Safari](https://github.com/rohanb10/snoozz-tab-snoozing/blob/master/docs/safari.md).
 
-[Latest Release](https://github.com/LibertusRex/snoozz-local/releases/latest/) | [Changelog](https://snoozz.me/changelog) | [Browser Compatibility](https://snoozz.me/compatibility) | [Privacy](https://snoozz.me/privacy)
+[Latest Release](https://github.com/rohanb10/snoozz-tab-snoozing/releases/latest/) | [Changelog](https://snoozz.me/changelog) | [Browser Compatibility](https://snoozz.me/compatibility) | [Privacy](https://snoozz.me/privacy)
 
 Related repos: [Snoozz Website](https://github.com/rohanb10/snoozz-web) | [Snoozz Stats](https://github.com/rohanb10/snoozz-stats)
 
