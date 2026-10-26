@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>nap room | snoozz</title>
+	<link rel="icon" type="image/png" sizes="96x96" href="../icons/ext-icon-128.png">
+	<link rel="stylesheet" href="../styles/common.css" />
+	<link rel="stylesheet" href="../styles/nap-room.css" />
+	<link rel="stylesheet" href="../styles/clock.css" />
+</head>
+<body>
+	<div class="scroll-logo hidden"><img src="../icons/logo.svg"></div>
+	<div class="flex center">
+		<img class="snoozz-logo hoverable" src="../icons/logo.svg">
+		<img class="snoozz-text" src="../icons/snoozz.png">
+	</div>
+	<div tabindex="0" data-hover="Settings" class="settings"><img src="../icons/settings.png"></div>
+	<div class="changelog-overlay">
+		<div id="changelog">
+		<!-- <div id="changelog" class="disabled"> -->
+			<div class="changelog-container">
+				<h2 class="center">Snoozz has been updated <span id="v"></span>&nbsp;🎉</h2>
+				<p>This version is a huge update that brings in one of the most requested features.</p>
+				<br>
+				<h3>What's new?</h3>
+				<ul>
+					<li>Recurring Snoozes!</li>
+					<p>It's finally here. Snooze tabs and windows to reopen at regular intervals.<br>Choose from one of the <b>pre-defined intervals</b>, or setup your own on specific <b>days of the week</b> (Mon, Fri etc), or <b>days of the month</b> (1st, 15th, 31st etc).</p>
+					<li>Selected tabs are now grouped</li>
+					<p>Tabs that are snoozed together, stay together.</p>
+					<li>Keyboard shortcuts in the popup</li>
+					<p>They've actually been around for quite a while. Hover over the keyboard icon in the popup to become <a href="https://media.giphy.com/media/YQitE4YNQNahy/giphy-downsized-large.gif" target="_blank"><i>rapid</i></a>.</p>
+					<li>Duplicate sleeping tabs</li>
+					<p>Use the new overflow menus on each sleeping tab to duplicate it and choose a new time.</p>
+					<li>Hide sections in the nap room</li>
+					<p> Now you dont have to see a fat history section every time you're in the nap room</p>
+				</ul>
+				<br>
+				<p class="center">Open the <a href="https://snoozz.me/changelog">Changelog</a> to see all previous version changes</p>
+			</div>
+		</div>
+	</div>
+	<div class="iframe-overlay"></div>
+	<div class="overflow-overlay"></div>
+	<div class="instructions hidden">
+		<img class="up-arrow" src="../icons/up-arrow.svg">
+		<div>Snoozz your first tab/window using the pop-up menu above.</div><br>
+		<div>The Snoozz icon may be hiding inside the <span class="browser"></span> menu.</div><br>
+		<div>Don't forget to pin Snoozz to your toolbar!</div>
+	</div>
+	<div class="search-container center">
+		<div class="input-wrapper"><input id="search" autocomplete="off" type="search" placeholder="&nbsp;Search"></div>
+	</div>
+	<div id="time-container"></div>
+	<div id="no-tabs" class="hidden">
+		<div class="contain-clock">
+			<div class="face-1">
+				<div class="hour"></div>
+				<div class="minute"></div>
+				<div class="second"></div>
+				<div class="middle"></div>
+			</div> 
+
+			<div class="face-2">
+				<div class="line"></div>
+				<div class="line line-2"></div>
+				<div class="line line-3"></div>
+				<div class="line line-4"></div>   
+				<div class="line line-5"></div>
+				<div class="line line-6"></div>
+			</div>
+
+			<div class="arm"></div>
+			<div class="arm arm-2"></div>
+
+			<div class="bell"></div>
+			<div class="bell bell-2"></div>
+		</div>
+		<span>No tabs found :(</span>
+	</div>
+	<p id="api-message" class="hidden">Like most people, tabs may take 10 minutes to get out of bed. Mainly due to API restrictions, but also, laziness.</p>
+	<p id="history-message">Tabs in your Snoozz history are removed <a id="historyHref" href="./settings.html#history">-</a> after they wake up.</p>
+	<script type="text/javascript" src="../scripts/dayjs.min.js"></script>
+	<script type="text/javascript" src="../scripts/BSF.min.js"></script>
+	<script type="text/javascript" src="../scripts/gradient.min.js"></script>
+	<script type="text/javascript" src="../scripts/lozad.min.js"></script>
+	<script type="text/javascript" src="../scripts/common.js"></script>
+	<script type="text/javascript" src="../scripts/nap_room.js"></script>
+</body>
+</html>

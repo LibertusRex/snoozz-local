@@ -1,0 +1,152 @@
+* {
+	box-sizing: border-box;
+	scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+body, html, h1, h3, h4, h4+p {
+	margin: 0 auto;
+}
+body {
+	--color: #000;
+	--bg-color: #fff;
+
+	color: var(--color);
+	background: linear-gradient(135deg, var(--bg-color) 25%, #FFF0 25%) -20px 25px,
+				linear-gradient(225deg, var(--bg-color) 25%, #FFF0 25%) -20px 25px,
+				linear-gradient(315deg, var(--bg-color) 25%, #FFF0 25%) 0px 25px,
+				linear-gradient( 45deg, var(--bg-color) 25%, #FFF0 25%) 0px 25px,
+				linear-gradient(135deg, #F3B84528 25%, #FFF0 25%) -19px 23px,
+				linear-gradient(225deg, #F3B84528 25%, #FFF0 25%) -19px 23px,
+				linear-gradient(315deg, #F3B84528 25%, #FFF0 25%) 0px 23px,
+				linear-gradient( 45deg, #F3B84528 25%, #FFF0 25%) 0px 23px,
+				linear-gradient(135deg, #DF4E7621 25%, #FFF0 25%) -20px 27px,
+				linear-gradient(225deg, #DF4E7621 25%, #FFF0 25%) -20px 27px,
+				linear-gradient(315deg, #DF4E7621 25%, #FFF0 25%) 0px 27px,
+				linear-gradient( 45deg, #DF4E7621 25%, #FFF0 25%) 0px 27px;
+	background-size: 40px 40px;
+	background-color: var(--bg-color);
+
+	padding: 1em 0;
+	font-family: 'Arial', sans-serif;
+	font-size: 15px;
+}
+body.dark {
+	--bg-color: #333;
+	--color: #FFF;
+}
+@-moz-document url-prefix() {
+	body {
+		font-size: .9em;
+	}
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.center {
+	text-align: center;
+	justify-content: center;
+}
+
+.snoozz-logo {
+	max-width: 5em;
+}
+.snoozz-logo.hoverable {
+	transition: transform 2s linear;
+}
+.snoozz-logo.hoverable:hover {
+	transition-duration: 60s;
+	transform: rotate(4320deg);
+}
+.snoozz-text {
+	margin-left: 1.5em;
+	max-height: 2.5em;
+}
+body.dark .snoozz-text, body.dark img[src="../icons/unknown.png"], body.dark .settings img, body.dark .keyboard img {
+	filter: invert(1);
+}
+.scroll-logo {
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: .5em;
+	z-index: 9;
+	transition: top .3s ease-in-out;
+}
+.scroll-logo.hidden {
+	top: -5em;
+}
+
+.scroll-logo img {
+	height: 3em;
+	cursor: pointer;
+	animation: spin 20s infinite linear paused;
+}
+
+@keyframes spin {from {transform: rotate(0)} to {transform: rotate(360deg)}}
+.scroll-logo:not(.hidden) img {
+	animation-play-state: running;
+}
+a {
+	color: var(--color);
+	cursor: pointer;
+	text-decoration: underline;
+}
+a:focus-visible {
+	outline-offset: 3px;
+	outline: 2px dashed crimson;
+	background: none;
+}
+a:hover {
+	background: linear-gradient(90deg, #f3b845 0%, #df4e76 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.settings, .nap-room {
+	position: fixed;
+	top: 0.5em;
+	right: 0.5em;
+	cursor: pointer;
+}
+.settings:focus-visible, .nap-room:focus-visible, .keyboard:focus-visible {
+	outline: 2px dashed crimson;
+}
+.settings img, .nap-room img {
+	width: 3em;
+	filter: grayscale(100%)
+}
+.settings:before, .nap-room:before {
+	content: attr(data-hover);
+	position: absolute;
+	opacity: 0;
+	top: .75em;
+	font-size: 1.25em;
+	right: 125%;
+	pointer-events: none;
+	touch-action: none;
+	transition: opacity .3s ease-in-out;
+	white-space: nowrap;
+}
+.settings:hover:before, .nap-room:hover:before, .settings:focus-within:before, .nap-room:focus-within:before {
+	opacity: 1;
+}
+.settings img:hover, .settings:focus-within img {
+	animation: spin 2.5s steps(16, end) infinite;
+}
+
+.nap-room img:hover, .nap-room:focus-within img {
+	filter: grayscale(0);
+}
+
+@keyframes spin {
+	from {transform: rotate(0deg)}
+	to {transform: rotate(360deg)}
+}

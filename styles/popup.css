@@ -1,0 +1,594 @@
+body {
+	position: relative;
+	width: 48em;
+	padding: .5em;
+	background-image: none;
+}
+img {
+	max-width: 4.5em;
+}
+
+a {
+	color: var(--color);
+}
+
+h3 {
+	text-transform: uppercase;
+	font-size: .9em;
+	margin-bottom: .25rem;
+	transition: opacity, .5s ease-in-out
+}
+
+#icon {
+	transition: transform .3s ease-in-out;
+}
+#icon.flipped {
+	transform: rotate(180deg);
+}
+.header {
+	margin: 0 .25rem .25rem;
+}
+.header > div {
+	width: 50%;
+	max-width: 50%;
+}
+#targets {
+	margin: .25em 0 .75em;
+	padding: .5em;
+	justify-content: space-evenly;
+	height: 3em;
+}
+.target {
+	font-size: 1.2em;
+	padding: 2px;
+	cursor: pointer;
+	color: #888;
+	flex: 1 1;
+	text-align: center;
+}
+.target:not(.active):not(.disabled):hover {
+	opacity: .75;
+	color: var(--color);
+}
+.target span {
+	border-bottom: 3px solid transparent;
+	transition: border-color .3s ease-in-out;
+}
+.target.active span {
+	border-color: #DF4E76;
+}
+.target.active {
+	opacity: 1;
+	color: var(--color);
+}
+.target.disabled {
+	cursor: default;
+	opacity: .1;
+	pointer-events: unset;
+}
+.target:focus-visible, .nap-room-btn:focus-visible, .checkbox input:focus-visible {
+	outline-offset: 3px;
+	outline: 2px dashed crimson;
+	background: none;
+}
+
+#preview {
+	margin: .5em 0;
+	padding: .5em;
+	align-items: center;
+	border-radius: .33em;
+	height: 4em;
+	max-width: 100%;
+	justify-content: unset;
+	background-color: #ddd;
+	background-position: right;
+	background-size: 200% 200%;
+	transition: background-position 1.9s linear;
+	border: 2px solid transparent;
+	scrollbar-width: none;
+	color: var(--color);
+}
+
+#preview.snoozed {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#preview.animate {
+	background-position: left;
+}
+#preview.snoozed span {
+	transition: color .4s ease-in-out .75s;
+	font-size: 1.5em;
+	font-weight: bolder;
+}
+#preview-favicon {
+	height: 2.5em;
+	width: 2.5em;
+	margin-right: 1em;
+	margin-left: .25em;
+}
+
+#preview-text {
+	line-height: 1.5;
+	max-height: 3em;
+	overflow: scroll;
+}
+
+.section {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.section:first-of-type {
+	justify-content: space-between;
+}
+.section.choices, .section.special-choices {
+	position: relative;
+}
+.form-overlay {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: .33em;
+	background-color: #f7f7f7;
+	margin: .25rem;
+	z-index: 2;
+	justify-content: space-between;
+}
+.form-overlay.show {
+	display: flex;
+}
+.form-overlay > div, .repeat-time-wrapper, .repeat-section {
+	width: 50%;
+}
+.overlay-close-btn {
+	position: absolute;
+	top: .25rem;
+	right: .75rem;
+	line-height: 1;
+	font-size: 2rem;
+	opacity: .25;
+	cursor: pointer;
+}
+.overlay-close-btn:hover {
+	opacity: .5;
+}
+.form-overlay > .repeat-container {
+	display: flex;
+	width: 100%;
+}
+.repeat-interval-picker {
+	margin: 1.5rem 0 .5rem;
+	width: 100%;
+	justify-content: space-evenly;
+}
+.repeat-interval {
+	padding: .25rem .25rem .15rem;
+	font-size: 1.2rem;
+	cursor: pointer;
+	border-bottom: 3px solid rgba(0, 0, 0, .2);
+}
+.repeat-interval.active {
+	border-color: #DF4E76;
+}
+.hidden, .repeat-container:not(.hidden) ~ .date-wrapper, .repeat-container:not(.hidden) ~ .time-wrapper {
+	display: none !important;
+}
+.date-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: .25rem;
+	height: 100%;
+}
+.time-wrapper, .repeat-time-wrapper, .repeat-month-wrapper, .repeat-week-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.repeat-month-wrapper, .repeat-week-wrapper, .repeat-week-wrapper > div {
+	height: calc(100% - 4rem);
+}
+.repeat-section * {
+	user-select: none;
+}
+.repeat-container .f-months, .repeat-container .f-weekdays {
+	display: none;
+}
+.day-choice {
+	position: relative;
+	margin: .1rem 0;
+	border-radius: .25rem;
+	font-size: 1.1rem;
+}
+.day-choice span {
+	display: inline-block;
+	padding: .25rem .75rem .25rem 2.25rem;
+	width: 9rem;
+	cursor: pointer;
+}
+.day-choice:hover {
+	background-color: rgba(0, 0, 0, .1);
+}
+.day-choice span:before {
+	content: '';
+	position: absolute;
+	top: .4rem;
+	left: .6rem;
+	display: inline-block;
+	
+	height: .6rem;
+	width: .6rem;
+	border: 3px solid rgba(0, 0, 0, .2);
+	border-radius: .25rem;
+	transition: all .25s ease-in-out;
+}
+body.dark .day-choice span:before {
+	border: 3px solid rgba(255, 255, 255, .2);
+}
+.day-choice span.active:before, body.dark .day-choice span.active:before {
+	left: .9rem;
+	width: .33rem;
+	height: .8rem;
+	top: .3rem;
+	/*border-color: #FFF;*/
+	transform: rotate(45deg);
+	border-color: #DF4E76;
+	border-left: 0;
+	border-top: 0;
+	border-radius: 0;
+}
+.repeat-container .f-day.f-disabled.nextMonthDay, .repeat-container .f-day.f-disabled.nextMonthDay:hover {
+	opacity: 0;
+	height: 0;
+	cursor: default;
+}
+#repeat-time ~ .f-calendar{
+	margin-top: 3rem;
+}
+.quick-actions ~ h3 {
+	margin-top: 2.5rem;
+}
+#next-wakeup {
+	margin-bottom: .5rem;
+	line-height: 1;
+}
+.time-wrapper .f-calendar, .repeat-time-wrapper .f-calendar {
+	width: 150px;
+	transform: scale(1.25);
+	background: rgba(0, 0, 0, .1);
+}
+.quick-actions {
+	margin-top: 3rem;
+}
+.quick-actions h3 {
+	opacity: .5;
+}
+.reset-container {
+	margin-top: .5rem;
+	opacity: .6;
+	cursor: pointer;
+}
+.action, .custom-action {
+	padding: .25rem .5rem;
+	margin: .25rem .5rem;
+	border-radius: 3em;
+	cursor: pointer;
+	text-align: center;
+	min-width: 70px;
+	background: rgba(0, 0, 0, .1);
+}
+.action:not(.disabled):hover {
+	background: rgba(0, 0, 0, .2);
+}
+.action.disabled {
+	cursor: not-allowed;
+	opacity: .4;
+}
+.section.choices > .choice, .repeat-choice {
+	max-width: calc(50% - .5rem);
+	flex-basis: calc(50% - .5rem);
+}
+
+.choice, .custom-choice {
+	display: flex;
+	align-items: center;
+	margin: .25em;
+	padding: .25em .5em;
+	border-radius: .33em;
+	background-color: #f7f7f7;
+	outline: none;
+	height: 4em;
+	justify-content: space-between;
+	cursor: pointer !important;
+	position: relative;
+}
+.choice.last:after, .custom-choice.last:after {
+	content: 'PREV';
+	position: absolute;
+	bottom: .5em;
+	left: 1.25em;
+	width: 100%;
+	display: block;
+	opacity: 0.5;
+	font-size: .7em;
+	font-weight: 600;
+	color: var(--color);
+}
+
+.choice.disabled, .choice.always-disabled, .custom-choice.disabled, h3.disabled,  div[data-preview].disabled .preview, .repeat-choice.disabled {
+	pointer-events: none;
+	touch-action: none;
+	opacity: .1;
+	cursor: unset;
+}
+
+/* inside choice*/
+.choice img, .custom-choice img {
+	max-height: 2.5em;
+	padding-right: 1em;
+}
+
+.label {
+	font-weight: bold;
+	white-space: nowrap;
+}
+.label .text {
+	padding-left: .25rem;
+}
+.choice div, .custom-choice div {
+	user-select: none;
+}
+
+.choice > div:first-of-type, .custom-choice > div:first-of-type {
+	display: flex;
+	align-items: center;
+}
+
+.choice .date, .choice .time {
+	text-align: right;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.choice .date {
+	color: #777;
+}
+.choice select {
+	border: none;
+	outline: none;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background-color: rgba(0,0,0,.1);
+	background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z' fill='%23777'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+	background-repeat: no-repeat;
+	background-position-x: calc(100%);
+	background-position-y: center;
+	border-radius: .25rem;
+	padding: .1rem 1rem .1rem .25rem;
+	cursor: pointer;
+	color: var(--color);
+}
+.choice select:hover {
+	background-color: rgba(0, 0, 0, .25);
+}
+.choice .select-wrapper {
+	position: relative;
+}
+
+.choice.focused select, select:focus:hover, .choice:focus-visible select {
+	background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z' fill='white'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+}
+
+body.dark .choice .date {
+	color: #AAA;
+}
+.choice:hover *, .choice.focused *, .choice:hover .date, .custom-choice:hover *, .custom-choice.focused *, .custom-choice.really-focused, .choice:focus-visible *, .custom-choice:focus-visible *, .custom-choice.focused + .repeat-container span {
+	color: #FFF !important;
+}
+
+.custom-choice {
+	height: 4.5em;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	justify-content: unset;
+	width: 100%;
+	max-width: calc(50% - .5em);
+	overflow-x: hidden;
+}
+.custom-choice > div:first-of-type {
+	flex-basis: 40%;
+}
+.custom-choice > div:last-of-type {
+	flex-basis: calc(60% - .25rem);
+}
+.custom-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	opacity: 0;
+}
+.custom-choice.active, .custom-choice.focused {
+	max-width: 48em;
+	color: #FFF;
+}
+.custom-choice.active .custom-info, .custom-choice.focused .custom-info {
+	opacity: 1;
+}
+.time-display, .date-display {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+.submit-btn {
+	cursor: pointer;
+	transition: color .3s ease-in-out;
+	text-transform: uppercase;
+	padding: .5rem;
+	color: #FFF;
+	border-radius: .25rem;
+	background: rgba(0, 0, 0, .25);
+}
+.submit-btn:hover {
+	background: rgba(0, 0, 0, .4);
+}
+.submit-btn.disabled {
+	pointer-events: none;
+	touch-action: none;
+	opacity: .2;
+}
+.repeat-choice-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: flex-end;
+	pointer-events: none;
+	touch-action: none;
+}
+.repeat-choice label {
+	pointer-events: initial;
+	touch-action: initial;
+}
+
+.choice.focused, .choice:focus-visible, .choice:focus-within:hover, .custom-choice.focused, .custom-choice:focus-visible, .custom-choice.really-focused {
+	background-color: var(--bg) !important;
+}
+.choice.focused, .custom-choice.focused {
+	cursor: default;
+}
+.custom-choice.focused ~ .repeat-choice-overlay .checkbox span {
+	color: #FFF;
+}
+.choice.focused {
+	transition: background-color 0s linear;
+}
+.choice select:focus:hover {
+	color: var(--color);
+	background-color: rgba(0, 0, 0, .5);
+}
+
+body.dark #preview, body.dark .choice, body.dark .custom-choice, body.dark .form-overlay {
+	background-color: #444;
+}
+.footer a {
+	text-decoration: none;
+}
+.nap-room-btn  {
+	cursor: pointer;
+	font-size: 1.25em;
+}
+.upcoming:before {
+	border-top: 1px solid var(--color);
+	padding-right: ;
+	content: 'Tabs waking up today - '
+}
+.upcoming {
+	display: none;
+	font-size: .75em;
+	text-transform: uppercase;
+	color: #666;
+}
+body.dark .upcoming {
+	color: #BBB;
+}
+.upcoming:not([data-today='']) {
+	display: block;
+}
+.upcoming:after {
+	border-top: 1px solid var(--color);
+	content: attr(data-today)
+}
+.footer {
+	padding: .5rem .25rem 0;
+	justify-content: space-between;
+	align-items: center;
+}
+.footer .center img {
+	width: 2.75em;
+}
+.settings {
+	position: relative;
+	top: 0;
+	right: -.25em;
+	padding: .35em .25em;
+}
+.settings img {
+	vertical-align: middle;
+	width: 1.75em;
+}
+.settings:before {
+	top: -.15em;
+	line-height: 1.4;
+	font-size: unset;
+	border-radius: .25em;
+	padding: .5em .1em;
+	background-color: var(--bg-color);
+	z-index: 5;
+}
+.keyboard {
+	opacity: 0;
+	margin-right: .5em;
+	visibility: hidden;
+}
+.keyboard.show {
+	opacity: 1;
+	visibility: visible;
+}
+.keyboard img {
+	position: relative;
+	z-index: 4;
+	cursor: pointer;
+	max-width: 3em;
+	padding: .5em .25em;
+	transition: filter .2s ease-in-out;
+}
+.empty img {
+	max-width: 3em;
+	margin-left: .5em;
+}
+.keyboard.show:hover ~ .shortcut-overlay, .keyboard.show:focus-visible ~ .shortcut-overlay {
+	display: block;
+}
+.keyboard.show:hover img, .keyboard.show:focus-visible img {
+	filter: invert(40%) sepia(18%) saturate(2774%) hue-rotate(299deg) brightness(99%) contrast(87%);
+}
+.shortcut-overlay {
+	z-index: 3;
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	pointer-events: none;
+	touch-action: none;
+}
+.shortcuts, .shortcuts .borders, .shortcuts .keys {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.shortcuts .borders, .shortcuts .keys {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(../icons/keys.png) no-repeat center;
+	background-size: cover;
+}
+.shortcuts .borders {
+	background-image: url(../icons/keycaps.png);
+	filter: invert(40%) sepia(18%) saturate(2774%) hue-rotate(299deg) brightness(99%) contrast(87%);
+}
+body.dark .shortcuts .keys {
+	filter: invert(1);
+}
+body.show-shortcuts .choice div, body.show-shortcuts .custom-choice div, body.show-shortcuts #targets, body.show-shortcuts .repeat-choice label, body.show-shortcuts #preview {
+	opacity: .15;
+	filter: grayscale(80%);
+}

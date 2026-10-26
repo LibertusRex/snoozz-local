@@ -1,0 +1,69 @@
+{
+  "name": "Snoozz Local — Tabs & Windows",
+  "short_name": "Snoozz",
+  "description": "Declutter your browser by snoozing tabs and windows until you actually need them.",
+  "version": "2.5.1.1",
+  "icons": {
+    "128": "icons/ext-icon-128.png",
+    "48": "icons/ext-icon-48.png",
+    "32": "icons/ext-icon-32.png",
+    "16": "icons/ext-icon-16.png"
+  },
+  "manifest_version": 3,
+  "author": "Rohan Bhansali",
+  "options_ui": {
+    "page": "html/settings.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "scripts/service-worker.js"
+  },
+  "permissions": [
+    "alarms",
+    "contextMenus",
+    "idle",
+    "notifications",
+    "storage",
+    "tabs"
+  ],
+  "commands": {
+    "nap-room": {
+      "description": "Show me my sleeping tabs"
+    },
+    "startup": {
+      "description": "Snooze until the next time you launch your browser"
+    },
+    "in-an-hour": {
+      "description": "Snooze for an hour"
+    },
+    "today-morning": {
+      "description": "Snooze till today morning"
+    },
+    "today-evening": {
+      "description": "Snooze till today evening"
+    },
+    "tom-morning": {
+      "description": "Snooze till tomorrow morning"
+    },
+    "tom-evening": {
+      "description": "Snooze till tomorrow evening"
+    },
+    "weekend": {
+      "description": "Snooze till this Saturday"
+    },
+    "monday": {
+      "description": "Snooze till next Monday"
+    },
+    "week": {
+      "description": "Snooze till one week from now"
+    },
+    "month": {
+      "description": "Snooze till one month from now"
+    }
+  },
+  "version_name": "2.5 — reparo local Manifest V3",
+  "minimum_chrome_version": "120",
+  "action": {
+    "default_popup": "html/popup.html"
+  }
+}
